@@ -1,7 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import { useEffect } from "react";
 
 function App() {
+  const base_url = "https://itransition-4-api.onrender.com";
+  useEffect(() => {
+    fetch(`${base_url}/users`, {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json",
+        "Access-Control-Allow-Origin": "true",
+      },
+    })
+      .then((res) => res.json())
+      .then((result) => console.log(result))
+      .catch((err) => {
+        // console.log(err);
+      });
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
